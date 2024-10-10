@@ -26,9 +26,13 @@ new #[Layout('layouts.guest')] class extends Component
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $userPass = $validated['password'];
+
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered($user = User::create($validated)));
+        $user->api_token = Hash::make($user->id . $user->email . $userPass);
+        $user->save();
 
         Auth::login($user);
 

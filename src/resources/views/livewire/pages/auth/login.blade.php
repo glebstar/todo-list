@@ -62,10 +62,15 @@ new #[Layout('layouts.guest')] class extends Component
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
+            &nbsp;
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}" wire:navigate>
+                    {{ __('Register') }}
+                </a>
 
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
+
         </div>
     </form>
 </div>
